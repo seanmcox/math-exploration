@@ -39,36 +39,6 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		/*
-		 * Theoretical digital root patterns rely on base-10-style digital root progression being valid in other bases.
-		 * 2 - 3 (Theoretical digital root patterns: (1,1,1,1,1,1,1,...})
-		 * 3 - 2 (Theoretical digital root patterns: (1,2,2,2,2,2,2,...})
-		 * 4 - 1000+ (Theoretical digital root patterns: (1,2,1,2,1,2,...}, {3,3,3,3,3,3,3,3,...})
-		 * 5 - 13 (Theoretical digital root patterns: (1,2,4,4,4,4,...}, {3,2,4,4,4,4,...})
-		 * 6 - 11 (Theoretical digital root patterns: (1,2,4,3,1,2,4,3,1,...}, {5,5,5,5,5,5,5})
-		 * 7 - 39 (Theoretical digital root patterns: (1,2,4,2,4,2,4,2,4,...}, {3,6,6,6,6,6,6,6,6}, {5,4,2,4,2,4,2,4,2})
-		 * 8 - 1000+
-		 * 9 - 1000+
-		 * 10 - 1000+
-		 * 11 - 1000+
-		 * 12 - 1000+
-		 * 13 - 1000+
-		 * 14 - 1000+
-		 * 15 - 27
-		 * 16 - 1000+
-		 * 17 - 16
-		 * 18 - 1000+
-		 * 19 - 17
-		 * 20 - 13
-		 * 21 - 1000+
-		 * 22 - 1000+
-		 * 23 - 21
-		 * 24 - 25
-		 * 25 - 32
-		 */
-		// 1, b-1, b-3
-		// 10, 12, 15, 21, 22
-		
 		// Search for lychrel stops that are reached with a carry.
 //		for(int b=4;b<100;b++) {
 //			int i;
@@ -81,18 +51,24 @@ public class Main {
 //			if(!n.isLychrelStop())
 //				System.out.println(""+b+" - ");
 //		}
-//		for(int b=4;b<1000000000;b*=2) {
-//			b++;
-//			LychrelNumber n = new LychrelNumber(b, new int[] {b-1,b-1,b-1,b-1});
-//			int i;
-//			for(i=0;i<1000;i++) {
-//				n=n.nextLychrelNumber();
-//				if(n.isLychrelStop())
-//					break;
-//			}
-//			System.out.println(""+b+" - "+i);
-//			b--;
-//		}
+		for(int b=2;b<1030;b++) {
+			if(Integer.toBinaryString(b).matches("^100+$")) {
+				System.out.println(""+b+" - Proven Lychrel");
+				continue;
+			}
+			LychrelNumber n = new LychrelNumber(b, new int[] {b-1,b-1,b-1,b-1});
+			int i;
+			for(i=1;i<1000;i++) {
+				n=n.nextLychrelNumber();
+				if(n.isLychrelStop())
+					break;
+			}
+			if(Integer.toBinaryString(b).matches("^1111111+$")) {
+				System.out.println(""+b+" - "+i+" Proven non-lychrel.");
+				continue;
+			}
+			System.out.println(""+b+" - "+i);
+		}
 		
 
 		{
@@ -128,6 +104,7 @@ public class Main {
 //			}
 		}
 
+		/*
 		{
 			LychrelNumber n = new LychrelNumber(10, new int[] {1,0,7,5,5,4,7,0});
 //			LychrelNumber n = new LychrelNumber(10, new int[] {9, 1, 3, 8, 5, 9, 9 , 4, 8, 4, 0, 8});
@@ -141,6 +118,7 @@ public class Main {
 			}
 			System.out.println("Steps: "+i);
 		}
+		*/
 		
 //		for(int i=1000000000;i<1000010000;i++) {
 //			LychrelNumber n = new LychrelNumber(10, i);
