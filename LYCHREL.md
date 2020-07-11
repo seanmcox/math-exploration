@@ -19,6 +19,10 @@ s(45670) = 45670 + 7654 = 53324
 If one takes all resulting numbers that aren't palindromes and repeatedly applies the Digit Reversal and Sum algorithm to them until a palindrome is produced, usually the series of numbers generated is very short.
 However, there are some numbers which seem to never terminate, and it is not known if they will ever terminate. In some other bases there are series which have been proven to never terminate.
 
+See:
+* ["Lychrel number", Wikipedia](https://en.wikipedia.org/wiki/Lychrel_number)
+* ["196-Algorithm", Wolfram Mathworld](https://mathworld.wolfram.com/196-Algorithm.html)
+
 ## Definitions
 r(x) = the digit reversal of x.<br/>
 d(x) = the digital root of x.<br/>
@@ -29,7 +33,7 @@ Lychrel Number: Number, x, for which no s_n(x) (where n>0) is a Lychrel stop.<br
 
 *For any number, x, s(x) is sometimes simply referred to as the "next" number.*
 	
-###Interesting patterns in the infinite base:
+### Interesting patterns in the infinite base
 Pa(n,p) = 2^n(, 0)xp, b-2^n, b-1, b-2^n-1(, b-1)xp, 2^n-1 *(Never a palindrome.)*<br/>
 s(Pa(n,p)) = Pa(n+1,p)<br/>
 Pa(0,1) Arises naturally from N=b-1, b-1, b-1, b-1 in 3 steps, in bases that can get that far (ie. b>=4).<br/>
@@ -42,7 +46,7 @@ Pc(n,p) = 2^n, 2^n(, 0)xp, b-2^n, b-2^(n+1)-1, b-2^n-1(, b-1)xp, 2^n-1, 2^n *(Ne
 s(Pc(n,p)) = Pc(n+1,p)<br/>
 Arises naturally in bases of 2^n starting from N=b-1, b-1, b-1, b-1.<br/>
 
-####Some more general patterns based on these patterns:
+#### Some more general patterns based on these patterns
 Pag(n,p,q) = (2^n,)xq 2^n(, 0)xp, b-2^n, b-1, b-2^n-1(, b-1)xp, 2^n-1(, 2^n)xq *(Never a palindrome.)*<br/>
 s(Pag(n,p,q)) = Pag(n+1,p,q)<br/>
 
@@ -78,7 +82,7 @@ In base 10, all numbers that have a given digital root, n, will have next number
 	
 **TODO:** Generalize to other bases.
  
-####Proof
+#### Proof
 The digital root, d, of any base 10 number n is known to be equal to n%9.<br/>
 Hence, when a number is added to its reverse (which has the same digit sum), the new remainder will be the remainder of the sum of the two previous remainders (both the same), divided by 9,<br/>
 which is the same as the digital root of the sum of the two remainders (2*d).<br/>
@@ -99,7 +103,7 @@ In base 10, all numbers that are divisible by 11 will have next numbers that are
 	
 **TODO:** Generalize to other bases.
 	
-####Proof
+#### Proof
 Since divisibility by 11 can be tested by adding and subtracting each digit alternately in series (ie. 1234 => 1-2+3-4 = -2) and then testing to see if the result is divisible by 11, it follows
 that if a given number is divisible by 11, then its reverse will also be divisible by 11 (its reverse will have either the same result for the test or the negative version of the result).
 	
@@ -114,7 +118,7 @@ In base 10, if x has an even number of digits then the next number is a multiple
 	
 **Source for Idea:** https://mathoverflow.net/questions/117104/status-of-the-196-conjecture/117277#117277
 	
-####Proof
+#### Proof
 **No carry:**<br/>
 AB...CD + DC...BA = (A+D), (B+C), ..., (B+C), (A+D) = a, b, ..., b, a<br/>
 => a - b + - + b - a = a - a + b - b + c - c ... = 0 => multiple of 11
@@ -150,7 +154,7 @@ Where f(x) operates on the digits of a number moving from right to left. (Here, 
 	
 **TODO:** Generalize to other bases.
 	
-####Examples
+#### Examples
     1122 = 11*102
     2211 = 11*201
     1353 = 11*123
@@ -176,7 +180,7 @@ Where f(x) operates on the digits of a number moving from right to left. (Here, 
     100111 = 11*9101
     111001 = 11*10091 (r(n)=1019)
 
-####Proof
+#### Proof
 Without carry:
 
     ..., L, M, N, ... * 11 = ..., K+L, L+M, M+N, N+O, ...
@@ -215,7 +219,7 @@ For base b=infinity, the number N = b-1, b-1, b-1, b-1 never creates a palindrom
 	
 **Status:** Proven
 
-####Proof:
+#### Proof
 Define N(n+1) = s(N(n))
 	
 	Define N(-3) = b-1, b-1, b-1, b-1
@@ -235,7 +239,7 @@ For base b=2^(i+1), where n>0, the number N = b-1, b-1, b-1, b-1 never creates a
 	
 **Status:** Proven
 
-####Proof:
+#### Proof
 For base b = 2^(i+1)
 
 	N'(1) = 2^n, 0, b-2^n, b-1, b-2^n-1, b-1, 2^n-1 (See: N(0) from the previous proof.)
@@ -311,7 +315,7 @@ Every base b=2^n-1 where n>=7 will reach a palindrome, starting from N = b-1, b-
 
 **Status:** Proven
 
-####Proof:
+#### Proof
 Pa(0,1) is reached in 3 steps. (See: Theorem 6 proof)
 	
 for b = 2^n-1
@@ -348,7 +352,7 @@ for b = 2^n-1
     s'(N'''(n-7)) = (1+4+8+16)*2^(n-5)+1, (1+2+8)*2^(n-5)+3, (1+4)*2^(n-5)+3, (1+8)*2^(n-5)+4, b-(2+4+8+16)*2^(n-5)-3, b-(8+16)*2^(n-5)-6, b-(8+16)*2^(n-5)-6, b-(2+4+8+16)*2^(n-5)-3, (1+8)*2^(n-5)+4, (1+4)*2^(n-5)+3, (1+2+8)*2^(n-5)+3, (1+4+8+16)*2^(n-5)+1 (reached in 2 more steps. total 5n+4) Palindrome will be reached here for all bases s^n-1 where n>=7
 
 ### Theorem 9
-The number preceding a lychrel stop (ie. added to its mirror number, it becomes a lychrel stop) has one of two forms:
+In base 10, the number preceding a lychrel stop (ie. added to its mirror number, it becomes a lychrel stop) has one of two forms:
 	
 1. All digits added to their mirror digit are less than 10. (No Carry)
    1. The sum of the digits must be less than or equal to 9*floor(n/2)+(n%2)*4 where n is the number of digits in the number.
@@ -360,8 +364,8 @@ The number preceding a lychrel stop (ie. added to its mirror number, it becomes 
    1. The sum of the digits must be a multiple of 11 greater than zero and less than or equal to floor(n/2) where n is the number of digits in the number.
 
 **Status:** Proven
-	
-**TODO:** Calculate m for n = 99*m where n follows one of the patterns above.
+
+**TODO:** Extend this to other bases.
 	
 #### Proof
 Take n1 to be a series of digits a, b, c, ... c', b', a'<br/>
@@ -529,6 +533,129 @@ Every digit added to its mirror digit must make a number less than 10.<br/>
 If there are an odd number of digits, then the middle digit of n1 must be less than 5.
 
 ### Theorem 10
+The following two patterns are stable in the infinite base (these are the most generic patterns I have been able to construct):
+
+E(n,a) = A*2^n,...,Y*2^n,Z*2^n, (0,)xa, b-c*2^n,b-d*2^n-1,...,b-z*2^n-1,b-z*2^n-1,...,b-d*2^n-1,b-c*2^n-1, (b-1)xa, Z*2^n-1,Y*2^n,...,A*2^n
+O(n,a) =	 A*2^n,...,Y*2^n,Z*2^n, (0,)xa, b-c*2^n,b-d*2^n-1,...,b-z*2^n-1,...,b-d*2^n-1,b-c*2^n-1,(b-1,)xa,Z*2^n-1,Y*2^n,...,A*2^n
+
+By stable, I mean that for any number with a form described by either of these functions, the next number has a form that can also be described by the same function.
+
+**Status:** Proven
+	
+#### Proof
+s(E(n,a)) = A*2^(n+1),...,Y*2^(n+1),Z*2^(n+1), (0,)xa, b-c*2^(n+1),b-d*2^(n+1)-1,...,b-z*2^(n+1)-1,b-z*2^(n+1)-1,...,b-d*2^(n+1)-1,b-c*2^(n+1)-1, (b-1)xa, Z*2^(n+1)-1,...,Y*2^(n+1),A*2^(n+1) = E(n+1,a)
+s(O(n,a)) = A*2^(n+1),...,Y*2^(n+1),Z*2^n, (0,)xa, b-c*2^(n+1),b-d*2^(n+1)-1,...,b-z*2^(n+1)-1,...,b-d*2^(n+1)-1,b-c*2^(n+1)-1,(b-1,)xa,Z*2^(n+1)-1,...,Y*2^(n+1),A*2^(n+1) = O(n+1,a)
+
+### Theorem 11
+For base 10, a number of the form E(n,a) or O(n,a), there are only two forms where the next number can be a palindrome:
+
+1) For either E(n,a) or O(n,a), none of the digits carry. Hence c*2^(n+1) > b, and the same is true for d*2^(n+1)+1 through z*2^(n+1)+1. Hence all other digits that would normally not carry with the infinite base also don't carry.
+2) For only E(n,a), the only number that can produce a palindrome is, 6, 6, 5, 5. (Hence, a=0, and n must be 0 or 1 to make the E(n,a) pattern produce this result.)
+
+**Status:** Proven
+
+**TODO:** Extend this to other bases. Probably it will be necessary to extend theorem 9 to other bases first.
+
+#### Proof
+Per theorem 9, there are only two number forms for which the next number is a palindrome, one where all digits added to their opposite produce a value less than 10, and one where all digits added to their opposite produce either an 11 or a zero.
+
+##### No Carry
+The middle parts of the pattern have the form b-x. (Note: This does not include (b-1)xa, which normally doesn't carry anyway)
+If all of the b-x (except (b-1)xa, which usually doesn't carry anyway) digits fail to carry because 2*x >= b and the rest of the pattern progresses as normal, (ie. doesn't carry) then the pattern will create a palindrome.
+
+##### With Carry
+A*2^n + A*2^n can never equal 11. It must make an even number. The same with hypothetical B through Y terms. These optional terms must be absent from the patttern.
+Hence we are left with this form:
+
+	E(n,a) = Z*2^n,(0,)xa,b-c*2^n,b-d*2^n-1,...,b-z*2^n-1,b-z*2^n-1,...,b-d*2^n-1,b-c*2^n-1,(b-1)xa,Z*2^n-1
+	O(n,a) =	Z*2^n,(0,)xa,b-c*2^n,b-d*2^n-1,...,b-z*2^n-1,...,b-d*2^n-1,b-c*2^n-1,(b-1,)xa,Z*2^n-1
+
+Z*2^n = 6 (Z=3 and n=1 or Z=6 and n=0) will lead to it creating 11 when added with its opposite giving us this:
+
+	E(n=1 or 0,a) = 6,(0,)xa,b-c*2^n,b-d*2^n-1,...,b-z*2^n-1,b-z*2^n-1,...,b-d*2^n-1,b-c*2^n-1,(b-1)xa,5
+	O(n=1 or 0,a) = 6,(0,)xa,b-c*2^n,b-d*2^n-1,...,b-z*2^n-1,...,b-d*2^n-1,b-c*2^n-1,(b-1,)xa,5
+
+
+Since b-1 will not be 11, a must be 0 giving us these possibilities:
+
+	E(n=1 or 0,0) = 6,b-c*2^n,b-d*2^n-1,...,b-z*2^n-1,b-z*2^n-1,...,b-d*2^n-1,b-c*2^n-1,5
+	O(n=1 or 0,0) = 6,b-c*2^n,b-d*2^n-1,...,b-z*2^n-1,...,b-d*2^n-1,b-c*2^n-1,5
+
+b-c*2^n = 6 will lead to it creating 11 when added with its opposite, (c=2 and n=1 or c=4 and n=0) giving us this:					
+
+	E(n=1 or 0,0) = 6,6,b-d*2^n-1,...,b-z*2^n-1,b-z*2^n-1,...,b-d*2^n-1,5,5
+	O(n=1 or 0,0) = 6,6,b-d*2^n-1,...,b-z*2^n-1,...,b-d*2^n-1,5,5
+
+b-d*2^n + b-d*2^n can never equal 11. It must make an even number. The same with hypothetical e through z terms. These optional terms must be absent from the pattern.
+Since this eliminates the odd z that distinguishes O(n,a), O(n,a) is not a possible form.
+Hence, the form is:
+
+	E(n=1 or 0,0) = 6,6,5,5
+
+Hence, this is the only number following the pattern which can lead to a palindrome with carry.					
+
+### Theorem 12
+In base 10, E(n,a) is always a multiple of 11. (Not true of O(n,a), but due to Theorem 3, all O(n,a) proceeding from a carrying E(n,a) must be multiples of 11, which places an interesting constraint on O(n,a).)
+
+**Status:** Proven
+
+**TODO:** Extend this to other bases.
+
+#### Proof
+E(n,a) = A*2^n,...,Y*2^n,Z*2^n,(0,)xa,b-c*2^n,b-d*2^n-1,...,b-z*2^n-1,b-z*2^n-1,...,b-d*2^n-1,b-c*2^n-1,(b-1,)xa,Z*2^n-1,Y*2^n,...,A*2^n
+
+	A*2^n-A*2^n = 0, which is also true for any terms B through Y.
+	deltaZ =  Z*2^n-(Z*2^n-1) = 1
+	deltab = 0-(b-1) = 1-b = -9 (in base 10, ie. b=10)
+	deltac = b-c*2^n-(b-c*2^n-1) = 1
+
+The deltas on the d through z terms are all 0.
+
+With any even a, there are an even number of deltab terms in the divisibility by 11 check, and the alternating positive and negative terms all cancel out and we end up with:
+
+	deltaZ - deltac = 0 => divisible by 11.
+
+With an odd a, all deltab terms cancel out except one, and we end up with: 
+
+	deltaZ - deltab + deltac = 1+9+1 = 11 => divisible by 11.
+
+This analysis does not work with O(n,a), and it is simple to construct a counterexample to the proposition that O(n,a) is always a multiple of 11.
+
+eg.
+3,6,0,4,3,3,9,5,3 is an example that comes up in the series starting with 9,9,9,9 and is a form matching O(0,1). Proceeding, as it does, from a number which is divisible by 11, then it too must be divisible by 11.
+
+	3-6+0-4+3-3+9-5+3 = 0 => divisible by 11
+	
+If we take this same number but redo it with O(0,0), then we get 3,6,4,3,3,5,3, which is a number that I already know terminates in a small number of steps. Doing the divisibility by 11 check, we get:
+
+	3-6+4-3+3-5+3 = -1 => NOT divisible by 11
+	
+In fact, it would seem that most O(n,a) are not divisible 11, meaning that far fewer of these numbers appear to be appropriate candidates for chains for non-lychrel numbers than for E(n,a). Is E(n,A) more likely to result in a palindrome shortly after carrying, before it can settle down into an O(n,a) pattern, than O(n,a) is (before settling down into an E(n,a) pattern)?
+
+### Theorem 13
+...
+
+	0:4) Define N(-3) = b-1, b-1, b-1, b-1
+	1:5) => N(-2) = 1, b-1, b-1, b-1, b-2
+	2:6) => N(-1) = 1, 0, b-1, b-1, b-2, b-1 
+	3:7) => N(0) = 1, 0, b-1, b-1, b-2, b-1, 0 = Pa(0,1) = (for n=0) 2^n, 0, b-2^n, b-1, b-2^n-1, b-1, 2^n-1
+	---) Pa(3,1) = 8,0,b-8,b-1,b-9,b-1,7 (would've carried for b=8, avoids an expected carry for b=9)
+	6:8) s(Pa(3,1)) = 1,5,b-1,b-6,b-2,b-6,0,5 (for b=10)
+	7:8) s'(Pa(3,1))= 6, 6, b-6, b-7, b-7, b-7, 5, 6 = N'(0) where N'(n') = 6*2^n',6*2^n',b-6*2^n',b-6*2^n'-1,b-6*2^n'-1,b-6*2^n'-1,6*2^n'-1,6*2^n' = E(n',0)
+    
+    ---) s(N'(n')) = N'(n'+1)
+    8:9) s(N'(0)) = 1,3,1,b-3,b-4,b-4,b-2,2,2 (for b=10)
+    9:9) s'(N'(0)) = 3,6,0,b-6,b-7,b-7,b-1,5,3 = N''(0) where N''(n'') = 3*2^n'',6*2^n'',0,b-6*2^n'',b-6*2^n''-1,b-6*2^n''-1,b-1,6*2^n''-1,3*2^n'' = O(n'',1)
+    
+    ----) s(N''(n'')) = N''(n''+1)
+    10:9) s(N''(0)) = 7,1,b-1,b-3,b-4,b-2,0,1,6 (for b=10)
+    ----) s'(N''(0)) = 13, 3, 0, b-4, b-7, b-5, b-1, 2, 13 = N'''(0) where N'''(n''') = 13*2^n''',3*2^n''',0,b-4*2^n''',b-6*2^n'''-1,b-4*2^n'''-1,b-1,3*2^n'''-1,13*2^n'''
+    10:10) s'(N''(0)) = 1,3,3,0,b-4,b-7,b-5,b-1,3,3 (for b=10)
+    -----) s''(N''(0)) = 4,7,2,b-4,b-10,b-11,b-4,2,6,4
+    -----) s'''(N''(0)) = 8,13,5,b-7,b-20,b-20,b-8,4,13,8 = N''''(0) where N''''(n'''') = 8*2^n'''',13*2^n'''',5*2^n'''',b-7*2^n'''',b-19*2^n''''-1,b-19*2^n''''-1,b-7*2^n''''-1,5*2^n''''-1,13*2^n'''',8*2^n''''
+    11:10) s''(N''(0)) = 4,7,2,b-5,b-1,b-1,b-4,2,6,4 (for b=10)
+    -----) s'''(N''(0)) = 8,13,5,b-8,b-1,b-1,b-9,4,13,8 = N'''''(0) where N'''''(n''''') = 8*2^n''''',13*2^n''''',5*2^n''''',b-8*2^n''''',b-1,b-1,b-8*2^n'''''-1,5*2^n'''''-1,13*2^n''''',8*2^n'''''
+    12:10) s'''(N''(0)) = 9,3,5,b-8,b-1,b-1,b-9,5,3,8 (for b=10)
 
 
 

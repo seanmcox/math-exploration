@@ -51,24 +51,152 @@ public class Main {
 //			if(!n.isLychrelStop())
 //				System.out.println(""+b+" - ");
 //		}
-		for(int b=2;b<1030;b++) {
-			if(Integer.toBinaryString(b).matches("^100+$")) {
-				System.out.println(""+b+" - Proven Lychrel");
-				continue;
+
+//		{
+//			int b=10;
+//			int[] digits = new int[] {6, 2, b-6, b-7, b-7, b-7, 1, 6};
+//			BigIntLychrel n = new BigIntLychrel(b, digits);
+//			System.out.print("0) ");
+//			System.out.println(n.toString());
+//			for(int k=0;k<5;k++) {
+//				n=n.nextLychrelNumber();
+//				System.out.print(k+1);
+//				System.out.print(") ");
+//				System.out.println(n.toString());
+//				if(n.isLychrelStop()) {
+//					System.out.println("Stop!!!");
+//					break;
+//				}
+//			}
+//			System.out.println("----------------------");
+//		}
+		
+		
+		for(int i=0;i<=20;i++){
+			int b=10;
+			int[] digits;
+			/*
+			{
+				digits = new int[i*2+8];
+				digits[0] = 6;
+				digits[1] = 6;
+				for(int j=0;j<i;j++)
+					digits[2+j] = 0;
+				digits[2+i] = 4;
+				digits[3+i] = 3;
+				digits[4+i] = 3;
+				digits[5+i] = 3;
+				for(int j=0;j<i;j++)
+					digits[5+i+j] = 9;
+				digits[6+2*i] = 5;
+				digits[7+2*i] = 6;
 			}
-			LychrelNumber n = new LychrelNumber(b, new int[] {b-1,b-1,b-1,b-1});
-			int i;
-			for(i=1;i<1000;i++) {
+			*/
+			{
+				digits = new int[i*2+7];
+				digits[0] = 3;
+				digits[1] = 6;
+				for(int j=0;j<i;j++)
+					digits[2+j] = 0;
+				digits[2+i] = 4;
+				digits[3+i] = 3;
+				digits[4+i] = 3;
+				for(int j=0;j<i;j++)
+					digits[5+i+j] = 9;
+				digits[5+2*i] = 5;
+				digits[6+2*i] = 3;
+			}
+			BigIntLychrel n = new BigIntLychrel(b, digits);
+//			System.out.println(n.toString());
+			System.out.println("i="+i);
+			for(int k=0;k<1000;k++) {
 				n=n.nextLychrelNumber();
-				if(n.isLychrelStop())
+//				System.out.print(k+1);
+//				System.out.print(") ");
+//				System.out.println(n.toString());
+				if(n.isLychrelStop()) {
+					System.out.println("Stop!!!");
 					break;
+				}
 			}
-			if(Integer.toBinaryString(b).matches("^1111111+$")) {
-				System.out.println(""+b+" - "+i+" Proven non-lychrel.");
-				continue;
-			}
-			System.out.println(""+b+" - "+i);
+			System.out.println("----------------------");
 		}
+//		{
+//			int b=10;
+//			BigIntLychrel n = new BigIntLychrel(b, new int[] {b-1,b-1,b-1,b-1});
+//			System.out.println(n.toString());
+//			for(int i=0;i<100;i++) {
+//				n=n.nextLychrelNumber();
+//				System.out.println(n.toString());
+//				if(n.isLychrelStop())
+//					break;
+//			}
+//		}
+//		{
+//			int b=1000000;
+//			BigIntLychrel n = new BigIntLychrel(b, new int[] {1,5,b-1,b-7,b-8,b-8,b-6,0,5});
+//			System.out.println(n.toString());
+//			for(int i=0;i<10;i++) {
+//				n=n.nextLychrelNumber();
+//				System.out.println(n.toString());
+//				if(n.isLychrelStop())
+//					break;
+//			}
+//		}
+//		{
+//			int b=1000000;
+//			BigIntLychrel n = new BigIntLychrel(b, new int[] {2,0,b-8,b-9,b-9,b-9,b-1,1});
+//			System.out.println(n.toString());
+//			for(int i=0;i<10;i++) {
+//				n=n.nextLychrelNumber();
+//				System.out.println(n.toString());
+//				if(n.isLychrelStop())
+//					break;
+//			}
+//		}
+//		{
+//			int b=1000000;
+//			BigIntLychrel n = new BigIntLychrel(b, new int[] {3,b-1,b-7,b-8,b-8,b-7,b-1,3});
+//			System.out.println(n.toString());
+//			for(int i=0;i<10;i++) {
+//				n=n.nextLychrelNumber();
+//				System.out.println(n.toString());
+//				if(n.isLychrelStop())
+//					break;
+//			}
+//		}
+//		{
+//			int b=1000000;
+//			BigIntLychrel n = new BigIntLychrel(b, new int[] {2,0,2,1,1,1,9,1});
+//			System.out.println(n.toString());
+//			for(int i=0;i<10;i++) {
+//				n=n.nextLychrelNumber();
+//				System.out.println(n.toString());
+//				if(n.isLychrelStop())
+//					break;
+//			}
+//		}
+		
+//		for(int b=2;b<11;b++) {
+//			if(Integer.toBinaryString(b).matches("^100+$")) {
+//				System.out.println(""+b+" - Proven Lychrel");
+//				continue;
+//			}
+//			BigIntLychrel n = new BigIntLychrel(b, new int[] {b-1,b-1,b-1,b-1});
+//			int i;
+//			for(i=1;i<1000;i++) {
+//				n=n.nextLychrelNumber();
+//				if((b==10)&&(i<150))
+//					System.out.println(n.toSimpleString());
+//				if(n.isLychrelStop())
+//					break;
+//			}
+//			if(Integer.toBinaryString(b).matches("^1111111+$")) {
+//				System.out.println(""+b+" - "+i+" Proven non-lychrel.");
+//				continue;
+//			}
+//			System.out.println(""+b+" - "+i);
+//		}
 		
 
 		{
@@ -152,7 +280,7 @@ public class Main {
 	 * @param n
 	 * @param steps
 	 */
-	public static void printLychrelNumberReportExaminingUnstablePrimes(LychrelNumber n, int steps) {
+	public static void printLychrelNumberReportExaminingUnstablePrimes(BigIntLychrel n, int steps) {
 		System.out.println("Report:");
 		System.out.println("n = "+n);
 		int stablePrimes = n.getBase()+1;
@@ -182,30 +310,30 @@ public class Main {
 	 * @param n
 	 * @param steps
 	 */
-	public static void printLychrelNumberReport(LychrelNumber n, int steps) {
+	public static void printLychrelNumberReport(BigIntLychrel n, int steps) {
 		System.out.println("Report:");
 		System.out.println(n);
 		{
-			LychrelNumber sum = n;
+			BigIntLychrel sum = n;
 			while(true) {
 				long s = sum.getDigitSum();
 				System.out.print(s+" ");
 				if(s<sum.getBase())
 					break;
-				sum = new LychrelNumber(sum.getBase(), (int)s);
+				sum = new BigIntLychrel(sum.getBase(), (int)s);
 			}
 			System.out.println();
 		}
 		for(int i = 0;(i < steps)&&(!n.isLychrelStop());i++) {
 			n = n.nextLychrelNumber();
 			System.out.println(n);
-			LychrelNumber sum = n;
+			BigIntLychrel sum = n;
 			while(true) {
 				long s = sum.getDigitSum();
 				System.out.print(s+" ");
 				if(s<sum.getBase())
 					break;
-				sum = new LychrelNumber(sum.getBase(), (int)s);
+				sum = new BigIntLychrel(sum.getBase(), (int)s);
 			}
 			System.out.println();
 		}

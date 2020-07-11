@@ -340,6 +340,18 @@ public class BigInt {
 	 */
 	@Override
 	public String toString() {
+		return toString(10);
+	}
+
+	/**
+	 * 
+	 * @param digitBase
+	 * @return A stringification of this BigInt with the individual digits arranged into a comma-separated list. 619 in base 10 would be represented as 6, 1, 9, though if the digitBase is set to 2, the same string would be 110, 1, 1001. 
+	 */
+	public String toString(int digitBase) {
+		String[] digits = new String[this.digits.length];
+		for(int i=0;i<digits.length;i++)
+			digits[i]=Integer.toString(this.digits[i],digitBase);
 		return "BigInt [base=" + base + ", digits=" + Arrays.toString(digits) + "]";
 	}
 
